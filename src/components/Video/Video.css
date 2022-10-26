@@ -1,0 +1,11 @@
+@media screen and (min-width:45em) {
+    .video{
+        padding: .5em 1em;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 1em;
+        justify-content: center;
+    }
+}
+

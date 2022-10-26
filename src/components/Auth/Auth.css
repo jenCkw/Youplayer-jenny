@@ -1,0 +1,13 @@
+.auth{
+    height: 80vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.auth__container{
+    margin: 0 auto;
+    width: 30%;
+    display: flex;
+    justify-content: center;
+}
