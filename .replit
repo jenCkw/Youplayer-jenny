@@ -1,4 +1,2 @@
 run = "yarn start"
 entrypoint = "src/App.js"
-
-
