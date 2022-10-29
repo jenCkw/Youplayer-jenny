@@ -3,7 +3,7 @@ import "./App.css";
 import NavBar from "./components/NavBar";
 import Video from "./components/Video";
 import { youtube_seach, clientId, API } from "./youtube";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import PlayVideo from "./components/PlayVideo";
 import Auth from "./components/Auth";
 import { gapi } from "gapi-script";
@@ -64,8 +64,8 @@ function App() {
       .then(() => {
         var auth2 = gapi.auth2.getAuthInstance();
 
-        const user = auth2.currentUser.get();
-        setIsConnected(auth2.isSignedIn.get());
+        const user = auth2.currentUser?.get();
+        if (user) setIsConnected(auth2.isSignedIn.get());
       });
   };
 
@@ -85,7 +85,12 @@ function App() {
         setIsConnected={setIsConnected}
       />
       <Routes>
-        <Route path="/" element={<Video videos={videos} />} />
+        <Route
+          path="/"
+          element={
+            isConnected ? <Video videos={videos} /> : <Navigate to="/login" />
+          }
+        />
         <Route path=":videoId" element={<PlayVideo videos={videos} />} />
         <Route
           path="/login"
